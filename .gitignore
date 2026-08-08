@@ -1,0 +1,4 @@
+build/
+.mygit/
+*.o
+minigit
