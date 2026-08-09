@@ -4,9 +4,12 @@
 
 #ifndef MINIGIT_REPOSITORY_H
 #define MINIGIT_REPOSITORY_H
-
+#include <string>
 
 class Repository {
+public:
+	static const std::string REPO_DIR;
+	static int init();
 };
 
 
