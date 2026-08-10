@@ -2,4 +2,5 @@ build/
 .mygit/
 *.o
 minigit
-test-repo/
+test-repo/*
+!test-repo/demo.sh

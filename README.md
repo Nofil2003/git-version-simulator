@@ -39,6 +39,16 @@ echo "hello" > a.txt
 ../minigit checkout c1
 ```
 
+## Demo script
+
+`test-repo/demo.sh` runs all six commands end to end with commentary — it wipes
+its own state first, so it can be re-run any number of times:
+
+```bash
+g++ -std=c++17 src/*.cpp -o minigit
+cd test-repo && ./demo.sh
+```
+
 ## Commands
 
 | Command | What it does |
