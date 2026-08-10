@@ -10,6 +10,7 @@ class Repository {
 public:
 	static const std::string REPO_DIR;
 	static int init();
+	static int add(const std::string& filename);
 };
 
 

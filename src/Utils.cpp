@@ -10,11 +10,11 @@
 namespace fs = std::filesystem;
 namespace Utils{
 
-	bool Utils::pathExists(const std::string &path){
+	bool pathExists(const std::string &path){
 		return fs::exists(path);
 	}
 
-	bool Utils::createDir(const std::string &path){
+	bool createDir(const std::string &path){
 		if(fs::exists(path)) return true;
 		return fs::create_directories(path);
 	}
