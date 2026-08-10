@@ -5,9 +5,10 @@
 #include <iostream>
 
 int main(int argc, char* argv[]) {
+	// No command given: show the landing page instead of an error.
 	if (argc < 2){
-		std::cerr << "usage: mingit <command> [args...]\n";
-		return 1;
+		CommandParser::printLanding();
+		return 0;
 	}
 	return CommandParser::run(argc, argv);
 

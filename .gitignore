@@ -2,3 +2,4 @@ build/
 .mygit/
 *.o
 minigit
+test-repo/

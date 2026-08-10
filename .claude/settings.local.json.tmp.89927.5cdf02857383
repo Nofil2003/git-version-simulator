@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(g++ -std=c++17 src/*.cpp -o minigit)",
+      "Bash(git add *)",
+      "Bash(git commit -q -m 'feat\\(index\\): finish staging area read/clear and add fs helpers *)",
+      "Bash(git push *)",
+      "Bash(rm -rf .mygit *.txt)",
+      "Bash(echo \"hello v1\")",
+      "Bash(echo \"notes v1\")",
+      "Bash(echo \"scratch\")",
+      "Bash(../minigit init *)",
+      "Bash(./minigit)",
+      "Bash(echo \"exit=$?\")",
+      "Bash(./minigit bogus *)",
+      "Bash(git commit -q -m 'feat\\(commit\\): add commit, log, status and checkout commands *)"
+    ]
+  }
+}

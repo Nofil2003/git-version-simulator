@@ -11,6 +11,10 @@ public:
 	static const std::string REPO_DIR;
 	static int init();
 	static int add(const std::string& filename);
+	static int commit(const std::string& message);
+	static int log();
+	static int status();
+	static int checkout(const std::string& commitId);
 };
 
 
