@@ -7,6 +7,7 @@
 class Index{
 public:
 	static bool add(const std::string& filename);
+	static bool isStaged(const std::string& filename);
 	static std::vector<std::string> getStagedFiles();
 	static void clear();
 };

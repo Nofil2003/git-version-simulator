@@ -17,8 +17,10 @@ int Repository::add(const std::string& filename) {
         std::cerr << "not a minigit repo\n";
         return 1;
     }
+    // Report a re-add as "already staged" instead of claiming a second stage.
+    bool wasStaged = Index::isStaged(filename);
     if (!Index::add(filename)) return 1;
-    std::cout << "staged: " << filename << "\n";
+    std::cout << (wasStaged ? "already staged: " : "staged: ") << filename << "\n";
     return 0;
 }
 

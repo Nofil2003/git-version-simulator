@@ -23,18 +23,20 @@ bool Index::add(const std::string& filename){
 	}
 	std::string current = Utils::readFile(INDEX_PATH);
 
-	std::vector<std::string> staged = Index::getStagedFiles();
-	for (const std::string& f : staged) {
-    		if (f == filename) {
-        		std::cout << "already staged\n";
-        		return true;
-    		}
-	}
+	if (Index::isStaged(filename)) return true;
 
 	current += filename + "\n";
 
 	Utils::writeFile(INDEX_PATH, current);
 	return true;
+}
+
+// True when the file is already listed in the staging area.
+bool Index::isStaged(const std::string& filename){
+	for (const std::string& f : Index::getStagedFiles()) {
+		if (f == filename) return true;
+	}
+	return false;
 }
 
 // Read the index file and return its lines as a dynamic array of filenames.
