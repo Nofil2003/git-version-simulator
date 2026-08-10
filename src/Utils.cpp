@@ -6,6 +6,7 @@
 #include <filesystem>
 #include <sstream>
 #include <fstream>
+#include <ctime>
 
 namespace fs = std::filesystem;
 namespace Utils{
@@ -32,5 +33,34 @@ namespace Utils{
 		std::stringstream ss;
 		ss << in.rdbuf();
 		return ss.str();
+	}
+
+	// Copy a file to another path, replacing whatever was there before.
+	bool copyFile(const std::string& from, const std::string& to){
+		std::error_code ec;
+		fs::copy_file(from, to, fs::copy_options::overwrite_existing, ec);
+		return !ec;
+	}
+
+	// Return the regular files directly inside dir. The repo folder itself is
+	// skipped so status/commit never track minigit's own metadata.
+	std::vector<std::string> listFiles(const std::string& dir){
+		std::vector<std::string> files;
+		std::error_code ec;
+		for (const auto& entry : fs::directory_iterator(dir, ec)) {
+			if (!entry.is_regular_file()) continue;
+			std::string name = entry.path().filename().string();
+			if (name == ".mygit") continue;
+			files.push_back(name);
+		}
+		return files;
+	}
+
+	// Current local time formatted for storage inside commit files.
+	std::string timestamp(){
+		std::time_t now = std::time(nullptr);
+		char buf[32];
+		std::strftime(buf, sizeof(buf), "%Y-%m-%d %H:%M:%S", std::localtime(&now));
+		return std::string(buf);
 	}
 }
